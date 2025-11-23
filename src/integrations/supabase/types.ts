@@ -346,7 +346,7 @@ export type Database = {
       }
     }
     Enums: {
-      source_type: "pdf" | "text" | "website" | "youtube" | "audio"
+      source_type: "pdf" | "text" | "website" | "youtube" | "audio" | "image"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -462,7 +462,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      source_type: ["pdf", "text", "website", "youtube", "audio"],
+      source_type: ["pdf", "text", "website", "youtube", "audio", "image"],
     },
   },
 } as const

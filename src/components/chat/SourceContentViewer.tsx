@@ -128,6 +128,7 @@ const SourceContentViewer = ({
       'youtube': '/file-types/MP3.png',
       'audio': '/file-types/MP3.png',
       'doc': '/file-types/DOC.png',
+      'image': '/file-types/PDF.svg',
       'multiple-websites': '/file-types/WEB.svg',
       'copied-text': '/file-types/TXT.png'
     };

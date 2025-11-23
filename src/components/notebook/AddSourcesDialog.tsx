@@ -86,10 +86,20 @@ const AddSourcesDialog = ({
     }
   }, []);
 
+  const getFileType = (file: File): 'pdf' | 'text' | 'website' | 'youtube' | 'audio' | 'image' => {
+    const fileName = file.name.toLowerCase();
+    const mimeType = file.type.toLowerCase();
+
+    if (mimeType.includes('pdf') || fileName.endsWith('.pdf')) return 'pdf';
+    if (mimeType.startsWith('audio/') || mimeType.includes('mpeg') || mimeType.includes('wav') || mimeType.includes('m4a')) return 'audio';
+    if (mimeType === 'image/png' || fileName.endsWith('.png')) return 'image';
+    return 'text';
+  };
+
   const processFileAsync = async (file: File, sourceId: string, notebookId: string) => {
     try {
       console.log('Starting file processing for:', file.name, 'source:', sourceId);
-      const fileType = file.type.includes('pdf') ? 'pdf' : file.type.includes('audio') ? 'audio' : 'text';
+      const fileType = getFileType(file);
 
       // Update status to uploading
       updateSource({
@@ -170,11 +180,11 @@ const AddSourcesDialog = ({
     try {
       // Step 1: Create the first source immediately (this will trigger generation if it's the first source)
       const firstFile = files[0];
-      const firstFileType = firstFile.type.includes('pdf') ? 'pdf' : firstFile.type.includes('audio') ? 'audio' : 'text';
+      const firstFileType = getFileType(firstFile);
       const firstSourceData = {
         notebookId,
         title: firstFile.name,
-        type: firstFileType as 'pdf' | 'text' | 'website' | 'youtube' | 'audio',
+        type: firstFileType as 'pdf' | 'text' | 'website' | 'youtube' | 'audio' | 'image',
         file_size: firstFile.size,
         processing_status: 'pending',
         metadata: {
@@ -195,11 +205,11 @@ const AddSourcesDialog = ({
         
         // Create remaining sources
         remainingSources = await Promise.all(files.slice(1).map(async (file, index) => {
-          const fileType = file.type.includes('pdf') ? 'pdf' : file.type.includes('audio') ? 'audio' : 'text';
+          const fileType = getFileType(file);
           const sourceData = {
             notebookId,
             title: file.name,
-            type: fileType as 'pdf' | 'text' | 'website' | 'youtube' | 'audio',
+            type: fileType as 'pdf' | 'text' | 'website' | 'youtube' | 'audio' | 'image',
             file_size: file.size,
             processing_status: 'pending',
             metadata: {
@@ -462,14 +472,14 @@ const AddSourcesDialog = ({
                   </p>
                 </div>
                 <p className="text-xs text-gray-500">
-                  Supported file types: PDF, txt, Markdown, Audio (e.g. mp3)
+                  Supported file types: PDF, txt, Markdown, Audio (e.g. mp3), PNG images
                 </p>
                 <input
                   id="file-upload"
                   type="file"
                   multiple
                   className="hidden"
-                  accept=".pdf,.txt,.md,.mp3,.wav,.m4a"
+                  accept=".pdf,.txt,.md,.mp3,.wav,.m4a,.png,image/png"
                   onChange={handleFileSelect}
                   disabled={isProcessingFiles}
                 />

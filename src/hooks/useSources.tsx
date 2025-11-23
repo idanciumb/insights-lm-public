@@ -99,7 +99,7 @@ export const useSources = (notebookId?: string) => {
     mutationFn: async (sourceData: {
       notebookId: string;
       title: string;
-      type: 'pdf' | 'text' | 'website' | 'youtube' | 'audio';
+      type: 'pdf' | 'text' | 'website' | 'youtube' | 'audio' | 'image';
       content?: string;
       url?: string;
       file_path?: string;
@@ -152,6 +152,7 @@ export const useSources = (notebookId?: string) => {
           // Determine if we can trigger generation based on source type and available data
           const canGenerate = 
             (newSource.type === 'pdf' && newSource.file_path) ||
+            (newSource.type === 'image' && newSource.file_path) ||
             (newSource.type === 'text' && newSource.content) ||
             (newSource.type === 'website' && newSource.url) ||
             (newSource.type === 'youtube' && newSource.url) ||
