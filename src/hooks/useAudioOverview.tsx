@@ -35,7 +35,7 @@ export const useAudioOverview = (notebookId?: string) => {
             if (newData.audio_overview_generation_status === 'completed' && newData.audio_overview_url) {
               setIsGenerating(false);
               toast({
-                title: "Audio Overview Ready!",
+                title: "Anlage zum Nachweis Ready!",
                 description: "Your deep dive conversation is ready to play!",
               });
               

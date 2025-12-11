@@ -181,14 +181,14 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
             className="flex-1"
           />
           {isAIResponse && (
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="sm"
               onClick={handleGenerateTitle}
               disabled={isGeneratingTitle}
             >
               <Wand2 className="h-4 w-4 mr-2" />
-              {isGeneratingTitle ? 'Generating...' : 'Generate Title'}
+              {isGeneratingTitle ? 'Extrahieren...' : 'Titel Extrahieren'}
             </Button>
           )}
         </div>

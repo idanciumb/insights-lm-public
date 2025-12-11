@@ -219,10 +219,10 @@ const StudioSidebar = ({
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <h2 className="text-lg font-medium text-gray-900 mb-4">Studio</h2>
         
-        {/* Audio Overview */}
+        {/* Anlage zum Nachweis */}
         <Card className="p-4 mb-4 border border-gray-200">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-medium text-gray-900">Audio Overview</h3>
+            <h3 className="font-medium text-gray-900">Anlage zum Nachweis</h3>
           </div>
 
           {hasValidAudio && !audioError && currentStatus !== 'generating' && !isAutoRefreshing ? <AudioPlayer 
@@ -273,8 +273,8 @@ const StudioSidebar = ({
                 <Button size="sm" onClick={handleGenerateAudio} disabled={isGenerating || currentStatus === 'generating' || !hasProcessedSource || isAutoRefreshing} className="flex-1 text-white bg-slate-900 hover:bg-slate-800">
                   {isGenerating || currentStatus === 'generating' ? <>
                       <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Generating...
-                    </> : 'Generate'}
+                      Extrahieren...
+                    </> : 'Extrahieren'}
                 </Button>
               </div>
             </Card>}
