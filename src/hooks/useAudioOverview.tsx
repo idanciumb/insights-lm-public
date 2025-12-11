@@ -36,7 +36,7 @@ export const useAudioOverview = (notebookId?: string) => {
               setIsGenerating(false);
               toast({
                 title: "Anlage zum Nachweis Ready!",
-                description: "Your deep dive conversation is ready to play!",
+                description: "Your Anlage zum Nachweis der abgerechneten is ready to play!",
               });
               
               // Invalidate queries to refresh the UI

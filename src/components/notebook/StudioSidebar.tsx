@@ -243,8 +243,8 @@ const StudioSidebar = ({
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-medium text-gray-900">Deep Dive conversation</h4>
-                    <p className="text-sm text-gray-600">Two hosts</p>
+                    <h4 className="font-medium text-gray-900">Anlage zum Nachweis der abgerechneten</h4>
+                    <p className="text-sm text-gray-600">RLV- und QZV</p>
                   </div>
                 </div>}
               
